@@ -1,0 +1,125 @@
+*
+{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html
+{
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 10px;
+}
+
+$defaultfontSize: 1.6rem;
+
+.breadcrumbs a
+{
+  text-decoration: none;
+  color: #000000;
+}
+
+@font-face
+{
+  font-family: Astronomus;
+  src: url(Astronomus.ttf);
+}
+
+/*
+==================================================
+Mixins
+==================================================
+*/
+
+@mixin reset-link
+{
+  text-decoration: none;
+}
+
+@mixin grid-tablet-center
+{
+  justify-self: center;
+  margin-bottom: 3.5rem;
+}
+
+@mixin grid__center-text-btn
+{
+  margin: 0 auto 1rem auto;
+  text-align: center;
+}
+
+/*
+==================================================
+Colors
+==================================================
+*/
+
+$lightGreen-1: #93e6d3;
+$lightGreen-2: #44d4b4;
+$defaultGreen: #4c9484;
+$darkGreen-1: #3c857d;
+$darkGreen-2: #305c54;
+$defaultGray: #b8b9c0;
+$defaultBlack: #000000;
+
+$green-1: #2eaf7d;
+$green-2: #449342;
+$blue-1: #3fd0c9;
+$blue-2: #c1f6ed;
+$blue-black: #02353c;
+
+/*
+==================================================
+Media Queries
+==================================================
+*/
+
+@mixin for-phone-only {
+  @media (max-width: 599px) {@content;}
+}
+
+@mixin for-tablet-portrait-up {
+  @media (min-width: 600px) and (max-width: 899px) {@content;}
+}
+
+@mixin for-tablet-landscape-up {
+  @media (min-width: 900px) and (max-width: 1199px) {@content;}
+}
+
+@mixin for-desktop-up {
+  @media (min-width: 1200px) {@content;}
+}
+
+@mixin for-big-desktop-up {
+  @media (min-width: 1800px) {@content;}
+}
+
+/*
+==================================================
+Buttons
+==================================================
+*/
+
+.btn
+{
+  padding: 1rem 2rem;
+  border: 0rem;
+  border-radius: 1.5rem;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 700;
+
+  &__cart
+  {
+    background-color: #4c9484;
+    
+    @include for-phone-only {
+      display: block;
+      margin: 0 auto;
+    }
+    
+  }
+}
+
+
+

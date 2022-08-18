@@ -1,0 +1,51 @@
+@import "../App.scss";
+
+.homeTop {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 17rem;
+  font-size: 1.4rem;
+
+  &__category {
+    width: 26rem;
+  }
+
+  &__header {
+    padding: 1rem;
+    background-color: #f6f7f9;
+  }
+
+  &__list {
+    list-style: none;
+
+    &-item {
+      padding: 1rem;
+      border: 1px solid #e7e7e7;
+    }
+  }
+
+  &__ad {
+    width: 100%;
+    max-width: 90rem;
+    height: auto;
+  }
+}
+
+.homeBottom {
+  display: flex;
+  justify-content: space-between;
+  margin: 10rem 0;
+  padding: 5rem 17rem;
+  font-size: $defaultfontSize;
+
+  &__item {
+    & i {
+      text-align: center;
+    }
+
+    &-icon {
+      text-align: center;
+      font-size: 5rem;
+    }
+  }
+}

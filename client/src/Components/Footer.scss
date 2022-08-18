@@ -1,0 +1,71 @@
+@import "../App.scss";
+
+.footer {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: .5fr 2fr;
+  padding: 3rem 17rem;
+  background-color: #222529;
+
+  &__header {
+    padding: 1rem 0;
+    color: #ffffff;
+    font-size: 1.5rem;
+  }
+
+  &__text,
+  &__link {
+    color: #a8a8a8;
+    font-size: 1.4rem;
+
+    &-white {
+      color: #ffffff;
+    }
+  }
+
+  &__contact {
+    grid-row: 1 / 3;
+
+    &-item {
+      padding: 1rem 0;
+    }
+
+    &-icons {
+      margin-top: 1.5rem;
+    }
+
+    &-icon {
+      margin-right: 1rem;
+      color: #ffffff;
+      font-size: $defaultfontSize;
+    }
+  }
+
+  &__links {
+    display: flex;
+    margin-top: 2.5rem;
+
+    &-list {
+      column-count: 2;
+    }
+
+    &-item {
+      margin-right: 5rem;
+      margin-bottom: 1rem;
+    }
+
+    &-left {
+      margin-right: 10rem;
+    }
+  }
+
+  &__link {
+    margin: 1rem 0;
+  }
+
+  &__form {
+    & input {
+      background-color: #292c30;
+    }
+  }
+}

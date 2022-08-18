@@ -1,0 +1,74 @@
+@import "../App.scss";
+
+.adsSlider
+{
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin: 2rem auto;
+  padding: 2rem 0;
+  background-color: #fff;
+  width: 95rem;
+  height: 40rem;
+  overflow: hidden;
+
+  
+
+  &__container
+  {
+    padding: 2rem 0;
+    background: rgb(255,255,255);
+    background: linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(147,230,211,1) 100%);
+  }
+
+  @include for-phone-only
+  {
+    width: 90%;
+    height: auto;
+  }
+
+  @include for-tablet-portrait-up
+  {
+    width: 90%;
+    height: auto;
+  }
+
+}
+
+.adsSlider__img
+{
+  width: 95rem;
+  height: 30rem;
+
+  @include for-phone-only
+  {
+    width: 90%;
+    height: auto;
+  }
+
+  @include for-tablet-portrait-up
+  {
+    width: 90%;
+    height: auto;
+  }
+}
+
+div.activeSlide
+{
+  position: absolute;
+  transform: translateX(0%);
+}
+
+.lastSlide
+{
+  position: absolute;
+  transform: translateX(-100%);
+}
+
+.nextSlide
+{
+  position: absolute;
+  transform: translateX(100%);
+}
+
+

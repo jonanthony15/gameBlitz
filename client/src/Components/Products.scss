@@ -1,0 +1,84 @@
+@import "../App.scss";
+
+.header
+{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 4rem;
+}
+
+.toolbox
+{
+  display: flex;
+  justify-content: space-between;
+  // width: 65%;
+  font-size: 1.4rem;
+
+  &__layout
+  {
+    // margin: 0 10rem;
+
+    & span
+    {
+      margin: 0 .5rem;
+      cursor: pointer;
+    }
+  }
+}
+
+.products__container
+{
+  display: flex;
+  justify-content: center;
+}
+
+.product
+{
+  display: grid;
+  grid-template-columns: repeat(3, 25rem);
+  gap: 5rem;
+  // margin: 0 4rem;
+  padding: 2rem 10rem;
+  transition: all .5s;
+
+  &__item
+  {
+    padding: 2rem 0;
+    // background-color: $defaultGray;
+    text-align: center;
+
+    &:hover
+    {
+      -webkit-box-shadow: 5px 5px 15px -4px rgba(0,0,0,0.47); 
+    box-shadow: 5px 5px 15px -4px rgba(0,0,0,0.47);
+    }
+
+    &-img
+    {
+      width: 16rem;
+      height: 20rem;
+    }
+
+    &-name
+    {
+      display: block;
+      margin-bottom: .5rem;
+      font-size: $defaultfontSize;
+      color: $defaultBlack;
+      text-decoration: none;
+    }
+
+    &-price
+    {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+  }
+}
+
+.product2
+{
+  display: block;
+}
+

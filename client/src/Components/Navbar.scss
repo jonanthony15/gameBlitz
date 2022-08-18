@@ -1,0 +1,50 @@
+@import "/src/App.scss";
+
+.navbar {
+  width: 100%;
+
+  & a {
+    text-decoration: none;
+  }
+
+  &__top {
+    display: flex;
+    // justify-content: center;
+    align-items: center;
+    padding: 2.7rem 17rem;
+    background-color: #7aa93c;
+
+    & a {
+      color: #ffffff
+    }
+  }
+
+  &__logo
+  {
+    font-family: Astronomus;
+  }
+
+  &__bottom {
+    padding: 2rem 15rem;
+    border-bottom: 1px solid #e7e7e7;
+
+    & a {
+      color: #000000;
+    }
+  }
+
+  &__list {
+    display: flex;
+    font-weight: 700;
+    list-style: none;
+
+    &-item {
+      margin: 0 2rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  &__logo {
+    font-size: 2rem;
+  }
+}
