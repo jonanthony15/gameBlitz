@@ -1,10 +1,24 @@
 @import "../App.scss";
 
+.prodBanner
+{
+  width: 100%;
+  background-color: #dee0e2;
+
+  &__img
+  {
+    display: block;
+    margin: 0 auto;
+    height: 29rem;
+    width: auto;
+  }
+}
+
 .header
 {
   display: flex;
   justify-content: space-between;
-  margin: 0 4rem;
+  margin: 1.5rem 4rem 0 4rem;
 }
 
 .toolbox
