@@ -3,21 +3,36 @@ import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import './Products.scss';
 import axios from 'axios';
-// import { products } from '../Data/products';
+import { products, genres, consoles } from '../Data/products';
+import eh from '../data';
+import productGames from '../Data/productGames';
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
+  // const [consoles, setConsoles] = useState([]);
+  // const [genres, setGenres] = useState([]);
   const [style, setStyle] = useState("product");
 
   const topAd = 'https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png';
 
-  useEffect(() =>
-  {
-    axios.get('http://localhost:3001/api/game').then((response) =>
-    {
-      setProducts(response.data);
-    });
-  }, [])
+  // useEffect(() =>
+  // {
+  //   axios.get('https://nielapp.herokuapp.com/api/game').then((response) =>
+  //   {
+  //     setProducts(response.data);
+  //   });
+
+  //   axios.get('https://nielapp.herokuapp.com/api/console').then((response) => {
+  //     setConsoles(response.data);
+  //   });
+
+  //   axios.get('https://nielapp.herokuapp.com/api/genre').then((response) => {
+  //     setGenres(response.data);
+  //   });
+  // }, [])
+
+  const productGenres = ['all', ...new Set(products.map((item) => item.genre_title))];
+  console.log(productGenres);
 
   const turnGrid = () =>
   {
@@ -57,23 +72,56 @@ const Products = () => {
           </div>
         </div>
         <div className="products__container">
-          <Sidebar />
+          <Sidebar genres={genres} consoles={consoles} />
+          {/* <section className="section__sidebar">
+            <div className="sidebar">
+              <h1 className="sidebar__heading">Categories</h1>
+              <div className="sidebar__category">
+                <p className="sidebar__category-title">Genres</p>
+                {genres.map((genre) =>
+                {
+                  return (
+                    <div key={genre.genre_id}>
+                      <input 
+                        type="checkbox"
+                        name='genre'
+                        value={genre.genre_title}
+                        className='sidebar__category-choice'
+                      />
+                      <label htmlFor="genre">{genre.genre_title}</label>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section> */}
           <section className="section__product">
             <div className={style}>
-              {products.map((product, index) =>
+              {productGames.map((game, index) =>
               {
-                const {game_id, game_title, game_price, console_title, genre_title, game_url} = product;
                 return (
-                  <div className="product__item" key={game_id}>
-                    <img src={game_url} className="product__item-img" alt={game_title} />
-                    <a href="#" className="product__item-name">{game_title}</a>
+                  <div className="product__item" key={game.game_id}>
+                    <img src={game.game_url} className="product__item-img" alt={game.game_title} />
+                    <a href="#" className="product__item-name">{game.game_title}</a>
                     <span className="fa fa-star checked"></span>
                     <span className="fa fa-star"></span>
                     <span className="fa fa-star"></span>
                     <span className="fa fa-star"></span>
                     <span className="fa fa-star"></span>
-                    <p className="product__item-price">${game_price}</p>
+                    <p className="product__item-price">${game.game_price}</p>
                     <button className="btn btn__cart">Add to cart</button>
+                    <Link to={`/products/${game.game_id}`}>More info</Link>
+                  </div>
+                );
+              })}
+            </div>
+            <div>
+              {eh.map((he) => {
+                return (
+                  <div key={he.id}>
+                    <h2>{he.name}</h2>
+                    <h2>{he.gender}</h2>
+                    <Link to={`/products/${he.id}`}>Click</Link>
                   </div>
                 );
               })}
