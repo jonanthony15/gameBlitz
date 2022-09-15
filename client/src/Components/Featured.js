@@ -2,25 +2,12 @@ import React, {useState, useEffect} from 'react';
 import '../App.scss';
 import './Featured.scss';
 import axios from 'axios';
-import { featureds, preorders, consoles } from '../Data/products';
+import { feats, preorders, consoles } from '../Data/products';
 // import { preorders } from '../Data/pre';
-import promo1 from '../img/asset_promo1.png';
-import promo2 from '../img/asset_promo2.png';
-
-const RecordFGames = (props) => {
-  return (
-    <div className="featgame__item">
-    
-      <a href="#">
-        <img src={props.record.fld_img} alt={props.record.fld_title} className='featgame__item-img' />
-
-      </a>
-      <p className="featgame__item-title">{props.record.fld_title}</p>
-      <p className="featgame__item-price">{props.record.fld_price}</p>
-
-    </div>
-  );
-};
+import promo1 from '../img/gameboyAd.jpg';
+import promo2 from '../img/vrAd.jpg';
+import promo3 from '../img/ps4controllerAd.jpg';
+import promo4 from '../img/asset_promo2.png';
 
 const PreOrder = (props) =>
 {
@@ -36,15 +23,15 @@ const PreOrder = (props) =>
 
 const Featured = () =>
 {
-  const [feats, setFeats] = useState([]);
+  // const [feats, setFeats] = useState([]);
 
-  useEffect(() =>
-  {
-    axios.get('http://localhost:3001/api/featured').then((response) =>
-    {
-      setFeats(response.data);
-    });
-  }, []);
+  // useEffect(() =>
+  // {
+  //   axios.get('https://nielapp.herokuapp.com/api/featured').then((response) =>
+  //   {
+  //     setFeats(response.data);
+  //   });
+  // }, []);
 
   return (
     <React.Fragment>
@@ -83,7 +70,14 @@ const Featured = () =>
           </div>
         </div>
         <div className="promo">
-          <img src={promo2} alt="promo1" />
+          <div className="promo__left">
+            <img src={promo1} alt="promo1" className='promo__img-1' />
+            <img src={promo2} alt="" className='promo__img-2' />
+          </div>
+          <div className="promo__right">
+            <img src={promo3} alt="" className='promo__img-3' />
+          </div>
+          
         </div>
         <div className="featured featgame">
           <h3 className="featured__heading">Pre order</h3>
@@ -105,7 +99,7 @@ const Featured = () =>
         </div>
 
         <div className="promo">
-          <img src={promo2} alt="promo1" />
+          <img src={promo4} alt="promo4" />
         </div>
       </section>
     </React.Fragment>

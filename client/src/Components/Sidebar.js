@@ -1,11 +1,60 @@
-import React, { useState} from "react";
+import React, { useState, useEffect } from "react";
 import './Sidebar.scss';
-import {consoles, prices, genres, products} from '../Data/products';
+import axios from "axios";
+import {prices, products} from '../Data/products';
 
-const Sidebar = () => {
+const Sidebar = ({ genres, consoles }) => {
+  // const [consoles, setConsoles] = useState([]);
+  // const [genres, setGenres] = useState([]);
   const [showConsole, setshowConsole] = useState(true);
   const [showPrice, setShowPrice] = useState(true);
   const [showGenre, setShowGenre] = useState(true);
+  const [userinfo, setUserInfo] = useState(
+    {
+      gens: [],
+      response: [],
+    }
+  );
+
+  // useEffect(() =>
+  // {
+  //   axios.get('http://localhost:3001/api/console').then((response) =>
+  //   {
+  //     setConsoles(response.data);
+  //   });
+
+  //   axios.get('http://localhost:3001/api/genre').then((response) =>
+  //   {
+  //     setGenres(response.data);
+  //   })
+  // }, []);
+
+  const handleChange = (e) =>
+  {
+    const {value, checked} = e.target;
+    const {gens} = userinfo;
+
+    console.log(`${value}`);
+
+    // if(checked)
+    // {
+    //   setUserInfo(
+    //     {
+    //       gens: [...gens, value],
+    //       response: [...gens, value],
+    //     }
+    //   );
+    // }
+    // else
+    // {
+    //   setUserInfo(
+    //     {
+    //       gens: gens.filter((e) => e !== value),
+    //       response: gens.filter((e) => e !== value),
+    //     }
+    //   );
+    // }
+  }
 
   // const ch = document.getElementById("sidebarCheck");
 
@@ -19,11 +68,11 @@ const Sidebar = () => {
             {/* <span><i class="fas fa-angle-down"></i></span> */}
               {consoles.map((console, index) =>
               {
-                const {id, name} = console;
+                const {console_id, console_title} = console;
                 return (
-                  <div key={id}>
-                    {showConsole && <input type="checkbox" name={name} value={name} className="sidebar__category-choice" id="sidebarCheck"/>}
-                    {showConsole && <label for={name}>{name}</label>}
+                  <div key={console.id}>
+                    {showConsole && <input type="checkbox" name={console_title} value={console_title} className="sidebar__category-choice" id="sidebarCheck"/>}
+                    {showConsole && <label for={console_title}>{console_title}</label>}
                   </div>
                 );
               })}
@@ -43,16 +92,48 @@ const Sidebar = () => {
           </div>
           <div className="sidebar__category" >
             <p className="sidebar__category-title" onClick={() => setShowGenre(!showGenre)}>Genre</p>
-              {genres.map((genre, index) =>
+              {genres.map((genre) =>
               {
-                const {id, name} = genre;
+                const {genre_id, genre_title} = genre;
                 return(
-                  <div key={id}>
-                    { showGenre && <input type="checkbox" name={'genre' + index} value={'genre' + index} className="sidebar__category-choice"/>}
-                    { showGenre && <label for={'genre' + index}>{name}</label>}
+                  <div key={genre_id}>
+                    { showGenre && 
+                      <input 
+                        type="checkbox" 
+                        name='genre' 
+                        value={genre_title} 
+                        className="sidebar__category-choice"
+                        onChange={handleChange}
+                      />
+                    }
+                    { showGenre && <label htmlFor="genre">{genre_title}</label>}
                   </div>
                 );
               })}
+          </div>
+          <div className="sidebar__category">
+            <p className="sidebar__category-title">ESRB</p>
+            <div>
+              <input type="checkbox" name="everyone" value="everyone" className="sidebar__category-choice" />
+              <label htmlFor="everyone">Everyone</label>
+            </div>
+            <div>
+              <input type="checkbox" name="everyoneTen" value="everyoneTen" className="sidebar__category-choice" />
+              <label htmlFor="everyoneTen">Everyone 10+</label>
+            </div>
+            <div>
+              <input type="checkbox" name="teen" value="teen" className="sidebar__category-choice" />
+              <label htmlFor="teen">Teen 13+</label>
+            </div>
+            <div>
+              <input type="checkbox" name="mature" value="mature" className="sidebar__category-choice" />
+              <label htmlFor="mature">Mature</label>
+            </div>
+            <div>
+              <input type="checkbox" name="pending" value="pending" className="sidebar__category-choice" />
+              <label htmlFor="pending">Rating Pending</label>
+            </div>
+            
           </div>
         </div>
       </section>
