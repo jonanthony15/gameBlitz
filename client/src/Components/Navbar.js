@@ -5,6 +5,7 @@ import {links} from '../Data/navData';
 import logo from '../img/GameBlitz-logos_black.png'
 
 const Navbar = () => {
+  const [toggleMenu, setToggleMenu] = useState(false)
 
   return (
     <nav className="navbar">
@@ -16,11 +17,10 @@ const Navbar = () => {
           <form action="">
             <input type="text" placeholder="Search" />
           </form>
-
         </div>
         <div className="navbar__icons">
-          <i></i>
-          <i></i>
+          <i className="fas fa-user navbar__icon"></i>
+          <i className="fas fa-shopping-cart navbar__icon"></i>
         </div>
       </div>
       <div className="navbar__bottom">
@@ -40,6 +40,33 @@ const Navbar = () => {
             </li>
           </ul>
         </div>
+        <div className="navbar__toggle">
+          <i class="fas fa-bars" onClick={() => setToggleMenu(!toggleMenu)}></i>
+        </div>
+        {toggleMenu &&
+        <div className="navbar__small">
+          <ul className="navbar__small-list">
+            <li className="navbar__small-list_item">
+              <Link to={"/"}>Home</Link>
+            </li>
+            <li className="navbar__small-list_item">
+              <Link to={"/products"}>Browse All</Link>
+            </li>
+            <li className="navbar__small-list_item">
+              <a href="#" className="navbar__small-link">Categories</a>
+            </li>
+            <li className="navbar__small-list_item">
+              <a href="#" className="navbar__small-link">Deals</a>
+            </li>
+            <li className="navbar__small-list_item">
+              <a href="#" className='navbar__small-link'>Account</a>
+            </li>
+            <li className="navbar__small-list_item">
+              <a href="#" className='navbar__small-link'>Cart</a>
+            </li>
+          </ul>
+        </div>
+        }
       </div>
     </nav>
   );

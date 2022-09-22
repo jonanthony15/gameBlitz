@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="footer__text">Get the latest deals and more</div>
         <form action="" className="footer__form">
           <input type="text" placeholder="Enter email address" />
-          <button className="btn">Sign Up</button>
+          <button className="btn bg-green">Sign Up</button>
         </form>
       </div>
       <div className="footer__links">

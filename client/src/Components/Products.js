@@ -11,6 +11,7 @@ const Products = () => {
   // const [products, setProducts] = useState([]);
   // const [consoles, setConsoles] = useState([]);
   // const [genres, setGenres] = useState([]);
+  const [gameItem, setGameItem] = useState(productGames);
   const [style, setStyle] = useState("product");
 
   const topAd = 'https://www.unfe.org/wp-content/uploads/2019/04/SM-placeholder.png';
@@ -42,6 +43,12 @@ const Products = () => {
   const turnBlock = () =>
   {
     setStyle("product2");
+  };
+
+  const filterItems = () =>
+  {
+    const result = productGames.filter(game => game.genre_title === 'Simulation' && game.console_title === 'Xbox One');
+    setGameItem(result);
   };
   
   return (
@@ -97,12 +104,12 @@ const Products = () => {
           </section> */}
           <section className="section__product">
             <div className={style}>
-              {productGames.map((game, index) =>
+              {gameItem.map((game, index) =>
               {
                 return (
                   <div className="product__item" key={game.game_id}>
-                    <img src={game.game_url} className="product__item-img" alt={game.game_title} />
-                    <a href="#" className="product__item-name">{game.game_title}</a>
+                    <Link to={`/products/${game.game_id}`}><img src={game.game_url} className="product__item-img" alt={game.game_title} /></Link>
+                    <Link to={`/products/${game.game_id}`} className="product__item-name">{game.game_title}</Link>
                     <span className="fa fa-star checked"></span>
                     <span className="fa fa-star"></span>
                     <span className="fa fa-star"></span>
@@ -110,22 +117,11 @@ const Products = () => {
                     <span className="fa fa-star"></span>
                     <p className="product__item-price">${game.game_price}</p>
                     <button className="btn btn__cart">Add to cart</button>
-                    <Link to={`/products/${game.game_id}`}>More info</Link>
                   </div>
                 );
               })}
             </div>
-            <div>
-              {eh.map((he) => {
-                return (
-                  <div key={he.id}>
-                    <h2>{he.name}</h2>
-                    <h2>{he.gender}</h2>
-                    <Link to={`/products/${he.id}`}>Click</Link>
-                  </div>
-                );
-              })}
-            </div>
+            <button onClick={filterItems}>Filter</button>
           </section>
         </div>
       </main>

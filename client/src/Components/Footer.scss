@@ -63,9 +63,39 @@
     margin: 1rem 0;
   }
 
-  &__form {
-    & input {
+  &__form 
+  {
+    & input 
+    {
+      padding: .9rem 1.5rem;
+      border: none;
       background-color: #292c30;
+    }
+  }
+}
+
+@media screen and (max-width: 1050px)
+{
+  .footer
+  {
+    padding: 3rem;
+  }
+}
+
+@media screen and (max-width: 700px)
+{
+  .footer
+  {
+    display: block;
+
+    &__links
+    {
+      display: block;
+    }
+
+    &__form
+    {
+      margin-top: 2rem;
     }
   }
 }
